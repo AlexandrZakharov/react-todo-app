@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import TodoList from "./components/TodoList";
 
 function App() {
+  const [inputText, setInputText] = useState("");
+  const [todoItems, setTodoItems] = useState([
+    {text: 'lolkek', isCompleted: false},
+    {text: '22424', isCompleted: false},
+    {text: 'lol42kek', isCompleted: true},
+    {text: '111', isCompleted: false},
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header>Awesome To-Do App</header>
+      <Form
+        todoItems={todoItems}
+        setTodoItems={setTodoItems}
+        inputText={inputText}
+        setInputText={setInputText}
+      />
+      <TodoList input={inputText} todoItems={todoItems} />
     </div>
   );
 }
