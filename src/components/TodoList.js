@@ -3,21 +3,14 @@ import TodoItem from "./TodoItem";
 const TodoList = (props) => {
   const removeTodoItem = (id) => {
     props.setTodoItems([
-      ...props.todoItems
-        .filter((item) => item.id !== id)
-        .map((item, i) => {
-          return {
-            ...item,
-            id: i,
-          };
-        }),
+      ...props.todoItems.filter((item) => item.id !== id)
     ]);
   };
 
   const completeTodoItem = (id) => {
     props.setTodoItems([
-      ...props.todoItems.map((item, i) => {
-        return i === id
+      ...props.todoItems.map((item) => {
+        return item.id === id
           ? {
               ...item,
               isCompleted: !item.isCompleted,
@@ -29,7 +22,7 @@ const TodoList = (props) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {props.todoItems.map((item) => (
+        {props.filteredItems.map((item) => (
           <TodoItem
             key={item.id}
             item={item}
