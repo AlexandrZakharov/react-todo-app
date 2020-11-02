@@ -5,11 +5,12 @@ const Form = (props) => {
   const addNewTodoItem = (e) => {
     e.preventDefault();
     props.setTodoItems([
+      ...props.todoItems,
       {
+        id: props.todoItems.length,
         text: props.inputText,
         isCompleted: false,
-      },
-      ...props.todoItems
+      }
     ]);
     props.setInputText("");
   };

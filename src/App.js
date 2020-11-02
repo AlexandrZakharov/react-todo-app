@@ -6,12 +6,9 @@ import TodoList from "./components/TodoList";
 function App() {
   const [inputText, setInputText] = useState("");
   const [todoItems, setTodoItems] = useState([
-    {text: 'lolkek', isCompleted: false},
-    {text: '22424', isCompleted: false},
-    {text: 'lol42kek', isCompleted: true},
-    {text: '111', isCompleted: false},
-  ]);
 
+  ]);
+  console.log(todoItems)
   return (
     <div className="App">
       <header>Awesome To-Do App</header>
@@ -21,7 +18,11 @@ function App() {
         inputText={inputText}
         setInputText={setInputText}
       />
-      <TodoList input={inputText} todoItems={todoItems} />
+      <TodoList
+        input={inputText}
+        todoItems={todoItems}
+        setTodoItems={setTodoItems}
+      />
     </div>
   );
 }
